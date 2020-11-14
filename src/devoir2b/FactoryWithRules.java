@@ -22,14 +22,18 @@ public class FactoryWithRules implements Factory {
 
 
         for (int i = 0; i < NUM_COLUMN; i++) {
-            ButtonGroup col = new ButtonGroup();
+                ButtonGroup col = new ButtonGroup();
 
             for (int j = 0; j < NUM_ROW; j++) {
                 JToggleButton button = new JToggleButton();
 
-                m.addButton(button);
-                col.add(button);
-                grid[j][i] = button;
+                m.addButton(button);    //mediator setup
+
+                if(rules.ordinal() == 0){
+                    col.add(button);    //default rules setup
+                }
+
+                grid[j][i] = button;    //addition to view
             }
         }
         return grid;
